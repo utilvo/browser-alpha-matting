@@ -4,9 +4,19 @@ export interface ColorKeyOptions {
   softness?: number;
 }
 
+export interface PerceptualLabOptions {
+  keyRgb?: [number, number, number];
+  deltaETolerance?: number;
+  deltaESoftness?: number;
+}
+
 export interface HybridFusionOptions {
   mode?: 'neural-with-counters' | 'min' | 'max';
   interiorConfidence?: number;
+}
+
+export interface JointBilateralOptions {
+  sigmaColor?: number;
 }
 
 export interface AlphaBoundingBox {
@@ -22,9 +32,11 @@ export interface MattingWorkerBridge {
     rgba: Uint8ClampedArray,
     width: number,
     height: number
-  ): Promise<{ alpha: Uint8Array; device: string }>;
+  ): Promise<{ alpha: Uint8Array; maskWidth?: number; maskHeight?: number; device: string }>;
   terminate(): void;
 }
+
+export declare function rgbToLab(r: number, g: number, b: number): [number, number, number];
 
 export declare function extractColorKeyAlpha(
   rgba: Uint8Array | Uint8ClampedArray,
@@ -33,10 +45,24 @@ export declare function extractColorKeyAlpha(
   options?: ColorKeyOptions
 ): Uint8Array;
 
+export declare function extractPerceptualLabAlpha(
+  rgba: Uint8Array | Uint8ClampedArray,
+  width: number,
+  height: number,
+  options?: PerceptualLabOptions
+): Uint8Array;
+
 export declare function fuseHybridAlpha(
   neuralAlpha: Uint8Array,
   colorKeyAlpha: Uint8Array,
   options?: HybridFusionOptions
+): Uint8Array;
+
+export declare function detectEnclosedCounters(
+  colorKeyAlpha: Uint8Array,
+  width: number,
+  height: number,
+  threshold?: number
 ): Uint8Array;
 
 export declare function upsampleAlphaBilinear(
@@ -45,6 +71,16 @@ export declare function upsampleAlphaBilinear(
   proxyH: number,
   targetW: number,
   targetH: number
+): Uint8Array;
+
+export declare function upsampleAlphaJointBilateral(
+  proxyAlpha: Uint8Array,
+  proxyW: number,
+  proxyH: number,
+  guideRgba: Uint8Array | Uint8ClampedArray,
+  targetW: number,
+  targetH: number,
+  options?: JointBilateralOptions
 ): Uint8Array;
 
 export declare function shiftAlphaBoundary(
