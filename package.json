@@ -1,7 +1,7 @@
 {
   "name": "browser-alpha-matting",
-  "version": "1.0.0",
-  "description": "Zero-dependency client-side alpha-matting kernel combining WebGPU/WASM neural saliency masks with Euclidean RGB color-keying, separable morphological edge refinement, 4K bilinear upsampling, and foreground color decontamination in browser memory.",
+  "version": "1.1.0",
+  "description": "Zero-dependency client-side alpha-matting SDK combining WebGPU/WASM neural saliency masks with Euclidean sRGB & CIE76 Lab color-keying, Joint Bilateral 4K upsampling, separable O(W*H) morphology, and foreground color decontamination.",
   "type": "module",
   "main": "./src/index.js",
   "module": "./src/index.js",
@@ -10,10 +10,15 @@
     ".": {
       "types": "./src/index.d.ts",
       "default": "./src/index.js"
-    }
+    },
+    "./worker": "./src/worker/rmbg-worker.mjs"
+  },
+  "bin": {
+    "browser-alpha-matting-bench": "./benchmarks/run-benchmarks.mjs"
   },
   "scripts": {
-    "test": "node --test test/matting.test.mjs"
+    "test": "node --test test/matting.test.mjs test/advanced-kernels.test.mjs",
+    "bench": "node benchmarks/run-benchmarks.mjs"
   },
   "keywords": [
     "alpha-matting",
@@ -21,13 +26,15 @@
     "webassembly",
     "background-removal",
     "color-key",
+    "joint-bilateral",
+    "cie-lab",
     "rmbg",
     "image-segmentation",
     "canvas",
     "client-side",
     "web-worker"
   ],
-  "homepage": "https://github.com/utilvo/browser-alpha-matting",
+  "homepage": "https://utilvo.github.io/browser-alpha-matting/",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/utilvo/browser-alpha-matting.git"
@@ -38,10 +45,13 @@
   "author": "Islam Ayoub <info@utilvo.com>",
   "license": "MIT",
   "files": [
-    "src/index.js",
-    "src/index.d.ts",
+    "src/",
+    "benchmarks/",
+    "examples/",
     "mod.ts",
     "README.md",
+    "CHANGELOG.md",
+    "SECURITY.md",
     "LICENSE"
   ]
 }
