@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you reference this software architecture or codebase, please cite it using the metadata below."
+type: software
+title: "browser-alpha-matting: Client-Side Hybrid Neural & Euclidean RGB Alpha-Matting Kernel"
+version: 1.0.0
+date-released: 2026-11-25
+license: MIT
+repository-code: "https://github.com/utilvo/browser-alpha-matting"
+url: "https://utilvo.com/background-remover"
+authors:
+  - family-names: "Ayoub"
+    given-names: "Islam"
+    orcid: "https://orcid.org/0009-0002-1503-5639"
