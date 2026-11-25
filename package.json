@@ -1,0 +1,47 @@
+{
+  "name": "browser-alpha-matting",
+  "version": "1.0.0",
+  "description": "Zero-dependency client-side alpha-matting kernel combining WebGPU/WASM neural saliency masks with Euclidean RGB color-keying, separable morphological edge refinement, 4K bilinear upsampling, and foreground color decontamination in browser memory.",
+  "type": "module",
+  "main": "./src/index.js",
+  "module": "./src/index.js",
+  "types": "./src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    }
+  },
+  "scripts": {
+    "test": "node --test test/matting.test.mjs"
+  },
+  "keywords": [
+    "alpha-matting",
+    "webgpu",
+    "webassembly",
+    "background-removal",
+    "color-key",
+    "rmbg",
+    "image-segmentation",
+    "canvas",
+    "client-side",
+    "web-worker"
+  ],
+  "homepage": "https://github.com/utilvo/browser-alpha-matting",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/utilvo/browser-alpha-matting.git"
+  },
+  "bugs": {
+    "url": "https://github.com/utilvo/browser-alpha-matting/issues"
+  },
+  "author": "Islam Ayoub <info@utilvo.com>",
+  "license": "MIT",
+  "files": [
+    "src/index.js",
+    "src/index.d.ts",
+    "mod.ts",
+    "README.md",
+    "LICENSE"
+  ]
+}
