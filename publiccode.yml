@@ -1,0 +1,96 @@
+# SPDX-FileCopyrightText: 2026 Islam Ayoub
+# SPDX-License-Identifier: MIT
+publiccodeYmlVersion: "0.4"
+
+name: browser-alpha-matting
+url: "https://github.com/utilvo/browser-alpha-matting"
+landingURL: "https://utilvo.com/background-remover"
+softwareVersion: "1.1.1"
+releaseDate: "2026-11-25"
+
+inputTypes:
+  - image/png
+  - image/jpeg
+  - image/webp
+
+outputTypes:
+  - image/png
+  - image/webp
+
+platforms:
+  - web
+  - linux
+  - windows
+  - mac
+
+categories:
+  - graphic-design
+  - digital-asset-management
+  - document-management
+
+developmentStatus: stable
+softwareType: library
+
+intendedAudience:
+  countries:
+    - de
+    - at
+    - ch
+  scope:
+    - local-authorities
+    - research
+    - science-and-technology
+    - healthcare
+    - culture
+
+description:
+  de:
+    localisedName: browser-alpha-matting
+    genericName: Client-seitige Bildfreistellungs- und Alpha-Matting-Bibliothek
+    shortDescription: >-
+      Abhängigkeitsfreie JavaScript/TypeScript-Bibliothek für DSGVO-konformes Alpha-Matting und lokale Hintergrundentfernung direkt im Browser-Speicher.
+    longDescription: >-
+      browser-alpha-matting ist ein quelloffener (MIT), abhängigkeitsfreier Bildverarbeitungs-Kernel zur vollständigen Ausführung von Vordergrund-Segmentierung und Alpha-Matting innerhalb des lokalen Browser-Arbeitsspeichers (TypedArray, Web Workers, WebGPU und WebAssembly). Durch den vollständigen Verzicht auf externe Cloud-APIs oder Server-Uploads erfüllt die Bibliothek die Anforderungen an Datenschutz durch Technikgestaltung (Art. 25 und Art. 32 DSGVO) sowie digitale Souveränität in öffentlichen Verwaltungen, Kommunen, Archiven und Forschungseinrichtungen — etwa bei der lokalen Vorverarbeitung von Lichtbildern, Dokumentenscans, Siegeln und Archivbeständen. Technisch kombiniert der Kernel neuronale Salienzkarten (RMBG-1.4 über WebGPU/WASM im Hintergrund-Worker) mit deterministischem 3D-RGB- und perzeptuellem CIE76-Lab-Color-Keying, Breitensuche (BFS) zur Freistellung geschlossener Buchstaben-Punzen, kantenbewusster Joint-Bilateral-4K-Skalierung, separabler O(W*H)-Morphologie und iterativer Farbdekontamination an halbtransparenten Kanten.
+    documentation: "https://github.com/utilvo/browser-alpha-matting#readme"
+    apiDocumentation: "https://github.com/utilvo/browser-alpha-matting/blob/main/src/index.d.ts"
+    features:
+      - Vollständig lokale Bildverarbeitung im Browser ohne Server-Upload (DSGVO-konform)
+      - Hybride Fusion aus WebGPU/WASM-Segmentierung und euklidischem RGB- sowie CIE76-Lab-Color-Keying
+      - Automatische BFS-Erkennung und Freistellung geschlossener Innenflächen bei Typografie und Wappen
+      - Kantenbewusste Joint-Bilateral-Hochskalierung für 4K-UHD-Aufnahmen bei konstantem Speicherbedarf
+      - Separable O(W*H) morphologische Kantenverschiebung, Tent-Feathering und Anti-Halo-Farbdekontamination
+      - Vollständige TypeScript-Typdefinitionen und automatisierte Komponententests ohne Drittabhängigkeiten
+  en:
+    localisedName: browser-alpha-matting
+    genericName: Client-Side Alpha-Matting and Foreground Extraction Kernel
+    shortDescription: >-
+      Zero-dependency JavaScript/TypeScript kernel for privacy-preserving, in-browser WebGPU and TypedArray alpha matting without server uploads.
+    longDescription: >-
+      browser-alpha-matting is an open-source (MIT), zero-dependency computer-vision library engineered to execute foreground segmentation, alpha-channel estimation, and edge color decontamination entirely inside local browser linear memory (TypedArray, Web Workers, WebGPU, and WebAssembly). Designed for data-sovereign public sector workflows, digital archiving, and research environments where transmitting sensitive documents, biometric photographs, or unpublished specimen imagery to third-party cloud servers is prohibited, the kernel fuses off-main-thread neural saliency inference (briaai/RMBG-1.4) with deterministic 3D Euclidean RGB and perceptual CIE76 Lab color-keying, breadth-first search (BFS) topological counter carving, edge-aware Joint Bilateral 4K upsampling, separable O(W*H) morphological boundary refinement, and iterative foreground color decontamination.
+    documentation: "https://github.com/utilvo/browser-alpha-matting#readme"
+    apiDocumentation: "https://github.com/utilvo/browser-alpha-matting/blob/main/src/index.d.ts"
+    features:
+      - 100% client-side execution in isolated Web Workers with zero network payload egress
+      - Hybrid fusion of WebGPU/WASM neural saliency masks with 3D Euclidean RGB and CIE76 Lab color-keying
+      - Topological BFS flood-fill detection for enclosed typographic counters and emblem apertures
+      - Edge-preserving Joint Bilateral 4K UHD proxy-mask upsampling in bounded RAM
+      - Separable O(W*H) erosion/dilation, two-pass box-blur tent feathering, and foreground color decontamination
+      - Strict zero-dependency ES module architecture with full TypeScript declarations
+
+legal:
+  license: MIT
+  mainCopyrightOwner: Islam Ayoub
+  repoOwner: Utilvo
+
+maintenance:
+  type: community
+  contacts:
+    - name: Islam Ayoub
+      email: info@utilvo.com
+      affiliation: Utilvo Research
+
+localisation:
+  localisationReady: true
+  availableLanguages:
+    - en
+    - de
