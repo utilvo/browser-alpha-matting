@@ -1,0 +1,34 @@
+{
+  "title": "browser-alpha-matting: Client-Side Hybrid Neural & Euclidean RGB Alpha-Matting Kernel for WebGPU and HTML5 Canvas",
+  "description": "<p>Zero-dependency JavaScript/TypeScript computer-vision kernel for client-side image segmentation and alpha-channel compositing inside browser memory. Implements 3D Euclidean RGB color-key alpha extraction, hybrid fusion of WebGPU/WebAssembly neural saliency masks (such as <code>briaai/RMBG-1.4</code>) with deterministic interior typographic counter carving, bilinear 4K proxy-mask upsampling, separable <em>O(W&middot;H)</em> morphological boundary erosion/dilation and box-tent feathering, iterative foreground color decontamination, and a zero-copy <code>Transferable</code> Web Worker client bridge.</p><p>Interactive browser sandbox testing the full hybrid WebGPU + Color-Key pipeline: <a href=\"https://utilvo.com/background-remover\">https://utilvo.com/background-remover</a>.</p>",
+  "upload_type": "software",
+  "license": "MIT",
+  "creators": [
+    {
+      "name": "Ayoub, Islam",
+      "affiliation": "Utilvo",
+      "orcid": "0009-0002-1503-5639"
+    }
+  ],
+  "keywords": [
+    "alpha-matting",
+    "image-segmentation",
+    "webgpu",
+    "webassembly",
+    "client-side-computing",
+    "html5-canvas",
+    "color-decontamination"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/utilvo/browser-alpha-matting",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://utilvo.com/background-remover",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}
