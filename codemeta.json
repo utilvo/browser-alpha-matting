@@ -1,0 +1,64 @@
+{
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
+  "@type": "SoftwareSourceCode",
+  "identifier": "browser-alpha-matting",
+  "name": "browser-alpha-matting: Client-Side Hybrid WebGPU, CIE76 Lab & Euclidean RGB Alpha-Matting Kernel",
+  "version": "1.1.1",
+  "dateCreated": "2026-11-24",
+  "datePublished": "2026-11-25",
+  "dateModified": "2026-11-25",
+  "license": "https://spdx.org/licenses/MIT",
+  "codeRepository": "https://github.com/utilvo/browser-alpha-matting",
+  "url": "https://utilvo.com/background-remover",
+  "readme": "https://github.com/utilvo/browser-alpha-matting/blob/main/README.md",
+  "issueTracker": "https://github.com/utilvo/browser-alpha-matting/issues",
+  "downloadUrl": "https://github.com/utilvo/browser-alpha-matting/releases/tag/v1.1.1",
+  "developmentStatus": "active",
+  "applicationCategory": "Computer Vision, Image Segmentation, Biomedical & Archival Imaging",
+  "description": "Zero-dependency ES module and TypeScript computer-vision kernel executing hybrid WebGPU/WebAssembly neural saliency segmentation (RMBG-1.4), deterministic 3D Euclidean RGB and perceptual CIE76 Lab color-keying, BFS enclosed counter carving, Joint Bilateral 4K proxy-mask upsampling, separable O(W*H) morphological boundary refinement, and iterative foreground color decontamination entirely inside local browser TypedArray memory with zero network data egress.",
+  "keywords": [
+    "alpha matting",
+    "image segmentation",
+    "foreground extraction",
+    "WebGPU",
+    "WebAssembly",
+    "color decontamination",
+    "joint bilateral upsampling",
+    "CIE76 Lab",
+    "privacy-preserving computing",
+    "microscopy specimen segmentation"
+  ],
+  "programmingLanguage": [
+    "JavaScript",
+    "TypeScript"
+  ],
+  "runtimePlatform": [
+    "Web Browser (WebGPU / WebAssembly / Web Workers)",
+    "Node.js >= 18"
+  ],
+  "operatingSystem": [
+    "Linux",
+    "macOS",
+    "Windows",
+    "Web"
+  ],
+  "author": [
+    {
+      "@type": "Person",
+      "@id": "https://orcid.org/0009-0002-1503-5639",
+      "givenName": "Islam",
+      "familyName": "Ayoub",
+      "email": "info@utilvo.com",
+      "affiliation": {
+        "@type": "Organization",
+        "name": "Utilvo Research"
+      }
+    }
+  ],
+  "referencePublication": {
+    "@type": "ScholarlyArticle",
+    "name": "Privacy-Preserving Client-Side Information Processing: A Browser-Based Architecture for Local Data Analysis and Secure File Handling",
+    "@id": "https://doi.org/10.5281/zenodo.22975427",
+    "url": "https://doi.org/10.5281/zenodo.22975427"
+  }
+}
