@@ -1,0 +1,52 @@
+#!/usr/bin/env python3
+import argparse
+import json
+import math
+import sys
+
+
+def clamp_byte(v: int) -> int:
+    return max(0, min(255, v))
+
+
+def unmix_channel(observed: int, bg: int, alpha_byte: int, alpha_floor: float = 0.05) -> int:
+    if alpha_byte <= 0:
+        return 0
+    if alpha_byte >= 255:
+        return clamp_byte(observed)
+    alpha = alpha_byte / 255.0
+    safe_a = max(alpha, max(0.02, alpha_floor))
+    return clamp_byte(round((observed - (1.0 - alpha) * bg) / safe_a))
+
+
+def dicom_distance_mm(dx_px: float, dy_px: float, row_mm: float, col_mm: float) -> float:
+    return math.hypot(dx_px * col_mm, dy_px * row_mm)
+
+
+def main() -> int:
+    p = argparse.ArgumentParser(prog="browser-alpha-matting")
+    p.add_argument("--unmix", nargs=3, type=int, metavar=("OBS", "BG", "ALPHA"))
+    p.add_argument("--dicom-mm", nargs=4, type=float, metavar=("DX", "DY", "ROW_MM", "COL_MM"))
+    p.add_argument("--selftest", action="store_true")
+    args = p.parse_args()
+
+    if args.unmix:
+        obs, bg, a = args.unmix
+        print(json.dumps({"reconstructedForeground": unmix_channel(obs, bg, a)}))
+        return 0
+    if args.dicom_mm:
+        dx, dy, r_mm, c_mm = args.dicom_mm
+        print(json.dumps({"distanceMm": round(dicom_distance_mm(dx, dy, r_mm, c_mm), 6)}))
+        return 0
+
+    f_rec = unmix_channel(120, 20, 128)
+    d_h = dicom_distance_mm(100.0, 0.0, 0.30, 0.25)
+    d_v = dicom_distance_mm(0.0, 100.0, 0.30, 0.25)
+    assert 218 <= f_rec <= 222
+    assert abs(d_h - 25.0) < 1e-9 and abs(d_v - 30.0) < 1e-9
+    print(json.dumps({"status": "ok", "version": "1.1.3", "unmixCheck": f_rec, "dicomAnisotropicMm": [d_h, d_v]}))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
