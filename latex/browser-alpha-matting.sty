@@ -1,0 +1,16 @@
+%% browser-alpha-matting.sty
+%% Copyright (c) 2026 Islam Ayoub <info@utilvo.com>
+%% Released under the LaTeX Project Public License v1.3c or MIT License.
+%% Typesetting macros for Porter-Duff alpha compositing, unassociated RGBA foreground
+%% color decontamination, and NEMA DICOM PS3.3 Section 10.7 pixel calibration notation.
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{browser-alpha-matting}[2026/11/26 v1.1.3 Alpha Matting & DICOM Pixel Calibration Notation]
+\RequirePackage{amsmath}
+\RequirePackage{amssymb}
+
+\newcommand{\CompositeChannel}[3]{#1 \, #2 + (1 - #1) \, #3}
+\newcommand{\UnmixForeground}[4]{\operatorname{clamp}_{[0,1]}\!\left(\frac{#1 - (1 - #2)\,#3}{\max(#2, #4)}\right)}
+\newcommand{\HermiteStep}[1]{3{#1}^{2} - 2{#1}^{3}}
+\newcommand{\DicomMetricMm}[4]{\sqrt{\left(#1 \cdot #4\right)^{2} + \left(#2 \cdot #3\right)^{2}}}
+
+\endinput

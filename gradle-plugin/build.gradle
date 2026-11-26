@@ -1,0 +1,40 @@
+plugins {
+    id 'java-gradle-plugin'
+    id 'com.gradle.plugin-publish' version '1.3.0'
+}
+
+group = 'io.github.utilvo'
+version = '1.1.2'
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+tasks.named('test', Test) {
+    useJUnitPlatform()
+}
+
+gradlePlugin {
+    website = 'https://utilvo.com/background-remover'
+    vcsUrl = 'https://github.com/utilvo/browser-alpha-matting.git'
+
+    plugins {
+        alphaMatting {
+            id = 'io.github.utilvo.alpha-matting'
+            displayName = 'Browser Alpha Matting & RGBA Edge Audit Plugin'
+            description = 'Deterministic Gradle build task that inspects 32-bit unassociated RGBA PNG image assets for semi-transparent trimap boundary ratios, zero-alpha RGB leakage, and premultiplied background halo contamination.'
+            tags.set(['alpha-matting', 'png', 'rgba', 'image-processing', 'asset-pipeline'])
+            implementationClass = 'io.github.utilvo.alphamatting.AlphaMattingPlugin'
+        }
+    }
+}
