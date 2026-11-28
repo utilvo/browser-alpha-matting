@@ -34,7 +34,7 @@
     "client-side",
     "web-worker"
   ],
-  "homepage": "https://utilvo.github.io/browser-alpha-matting/",
+  "homepage": "https://utilvo.com/background-remover",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/utilvo/browser-alpha-matting.git"

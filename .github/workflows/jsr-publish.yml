@@ -1,0 +1,19 @@
+name: Publish to JSR
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  jsr:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+      - run: npm test
+      - uses: denoland/setup-deno@v2
+      - run: deno publish --allow-dirty
